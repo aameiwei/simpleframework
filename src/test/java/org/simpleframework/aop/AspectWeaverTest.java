@@ -17,4 +17,15 @@ public class AspectWeaverTest {
         HeadLineOperationController headLineOperationController = (HeadLineOperationController)beanContainer.getBean(HeadLineOperationController.class);
         headLineOperationController.addHeadLine(null, null,null,null);
     }
+
+    @DisplayName("织入通用逻辑测试V1版本：doAop")
+    @Test
+    public void doAopV1Test(){
+        BeanContainer beanContainer = BeanContainer.getInstance();
+        beanContainer.loadBeans("com.imooc");
+        new AspectWeaverV1().doAop();
+        new DependencyInjector().doIoc();
+        HeadLineOperationController headLineOperationController = (HeadLineOperationController)beanContainer.getBean(HeadLineOperationController.class);
+        headLineOperationController.addHeadLine(null, null,null,null);
+    }
 }
