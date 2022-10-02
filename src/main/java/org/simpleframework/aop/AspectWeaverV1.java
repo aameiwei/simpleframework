@@ -79,6 +79,7 @@ public class AspectWeaverV1 {
     private boolean verifyAspect(Class<?> aspectClass) {
         return aspectClass.isAnnotationPresent(AspectV1.class) &&
                 aspectClass.isAnnotationPresent(Order.class) &&
-                DefaultAspect.class.isAssignableFrom(aspectClass);
+                DefaultAspect.class.isAssignableFrom(aspectClass)&&
+                aspectClass.getAnnotation(AspectV1.class).value()!= AspectV1.class;
     }
 }

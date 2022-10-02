@@ -20,6 +20,7 @@ public class JsonResultRender implements ResultRender {
         requestProcessorChain.getResponse().setContentType("application/json");
         requestProcessorChain.getResponse().setCharacterEncoding("UTF-8");
         // 响应流写入经过gson格式化之后的处理结果
+        // try括号的内容，在try块退出时，会自动调用close()方法，关闭资源。
         try(PrintWriter writer = requestProcessorChain.getResponse().getWriter()){
             Gson gson = new Gson();
             writer.write(gson.toJson(jsonData));
